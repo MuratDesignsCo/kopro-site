@@ -51,9 +51,113 @@ export default function SiteScripts() {
         src="https://cdn.prod.website-files.com/gsap/3.14.2/SplitText.min.js"
         strategy="afterInteractive"
       />
-      <Script id="gsap-register" strategy="afterInteractive">{`gsap.registerPlugin(ScrollTrigger,SplitText);`}</Script>
+      <Script id="gsap-register" strategy="afterInteractive">{`(function(){
+  function tryRegister(){
+    if (window.gsap && window.ScrollTrigger && window.SplitText) {
+      window.gsap.registerPlugin(window.ScrollTrigger, window.SplitText);
+      return true;
+    }
+    return false;
+  }
+  if (!tryRegister()) {
+    var attempts = 0;
+    var timer = setInterval(function(){
+      attempts += 1;
+      if (tryRegister() || attempts > 30) clearInterval(timer);
+    }, 150);
+  }
+})();`}</Script>
 
-      <Script id="slater-load" strategy="afterInteractive">{`document.addEventListener(\"DOMContentLoaded\", function() {function loadkopro(e){let t=document.createElement(\"script\");t.setAttribute(\"src\",e),t.setAttribute(\"type\",\"module\"),document.body.appendChild(t),t.addEventListener(\"load\",()=>{console.log(\"Slater loaded KOPRO.js: https://slater.app/18135.js\")}),t.addEventListener(\"error\",e=>{console.log(\"Error loading file\",e)})}let src=window.location.host.includes(\"webflow.io\")?\"https://slater.app/18135.js\":\"https://assets.slater.app/slater/18135.js?v=1.0\";loadkopro(src);})`}</Script>
+      <Script
+        src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"
+        strategy="afterInteractive"
+      />
+      <Script
+        src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"
+        strategy="afterInteractive"
+      />
+      <Script id="splide-init" strategy="afterInteractive">{`(function(){
+  function boot() {
+    const splides = document.querySelectorAll('.splide.autoplay');
+    if (!splides.length) return;
+
+    function initSplides() {
+      if (!window.Splide) return;
+      splides.forEach((el) => {
+        if (el.dataset.splideMounted === 'true') return;
+        const hasAutoScroll =
+          window.Splide &&
+          window.Splide.Extensions &&
+          window.Splide.Extensions.AutoScroll;
+
+        const instance = new window.Splide(el, {
+          type: 'loop',
+          perPage: 1,
+          pauseOnHover: false,
+          pauseOnFocus: false,
+          arrows: false,
+          pagination: false,
+          drag: true,
+          autoScroll: hasAutoScroll
+            ? {
+                speed: 0.01,
+                pauseOnHover: false,
+                pauseOnFocus: false,
+              }
+            : undefined,
+          autoplay: hasAutoScroll ? false : true,
+          speed: hasAutoScroll ? 1200 : 1800,
+          interval: hasAutoScroll ? 5000 : 5000,
+        });
+        if (hasAutoScroll) {
+          instance.mount({ AutoScroll: window.Splide.Extensions.AutoScroll });
+        } else {
+          instance.mount();
+        }
+        el.dataset.splideMounted = 'true';
+      });
+    }
+
+    if (window.Splide) {
+      initSplides();
+    } else {
+      let retries = 0;
+      const timer = setInterval(() => {
+        retries += 1;
+        if (window.Splide) {
+          clearInterval(timer);
+          initSplides();
+        }
+        if (retries > 40) clearInterval(timer);
+      }, 150);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();`}</Script>
+
+      <Script id="slater-load" strategy="afterInteractive">{`document.addEventListener("DOMContentLoaded", function() {
+  function loadkopro(e){
+    let t = document.createElement("script");
+    t.setAttribute("src", e);
+    t.setAttribute("type", "module");
+    document.body.appendChild(t);
+    t.addEventListener("load", () => {
+      console.log("Slater loaded KOPRO.js: https://slater.app/18135.js");
+    });
+    t.addEventListener("error", (e) => {
+      console.log("Error loading file", e);
+    });
+  }
+  let src = window.location.host.includes("webflow.io")
+    ? "https://slater.app/18135.js"
+    : "https://assets.slater.app/slater/18135.js?v=1.0";
+  loadkopro(src);
+});`}</Script>
 
       <Script id="memberstack-plan-route" strategy="afterInteractive">{`document.addEventListener("DOMContentLoaded", function () {\n  const path = window.location.pathname.replace(/\\/$/, "");\n  if (!path.startsWith("/app/dashboard")) return;\n  const PLAN_ROUTE_MAP = {\n    "pln_etape-2-9p7l0n8x": "/app/dashboard/etape-02",\n    "pln_-tape-3-lw750huj": "/app/dashboard/etape-03",\n    "pln_-tape-3-bis-fj760hbc": "/app/dashboard/etape-03-bis",\n    "pln_-tape-4-o56h0nq1": "/app/dashboard/etape-04",\n    "pln_-tape-4-bis-z8960ul1": "/app/dashboard/etape-04-bis",\n    "pln_-tape-5-o26i0nyt": "/app/dashboard/etape-05",\n    "pln_-tape-6-j3770hua": "/app/dashboard/etape-06",\n    "pln_-tape-7-is780hfr": "/app/dashboard/etape-07",\n    "pln_-tape-8-bl6m0ndu": "/app/dashboard/etape-08",\n    "pln_-tape-08-bis-l5790h5k": "/app/dashboard/etape-08-bis"\n  };\n  const backLink = document.getElementById("dashboardback");\n  if (!window.$memberstackDom) return;\n  window.$memberstackDom.getCurrentMember().then(({ data: member }) => {\n    if (!member) return;\n    const plans = member.planConnections || [];\n    if (!plans.length) return;\n    const activePlanId = plans[0].planId || plans[0].id;\n    const targetRoute = PLAN_ROUTE_MAP[activePlanId];\n    if (!targetRoute) return;\n    const normalizedTarget = targetRoute.replace(/\\/$/, "");\n    if (backLink) {\n      backLink.setAttribute("href", targetRoute);\n    }\n    if (path !== normalizedTarget) {\n      window.location.replace(targetRoute);\n    }\n  });\n});`}</Script>
 

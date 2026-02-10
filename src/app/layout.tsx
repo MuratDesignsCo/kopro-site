@@ -69,7 +69,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" data-wf-site="693414c0a24bd9a413f912b8" data-wf-page="693414c0a24bd9a413f912b9">
+    <html
+      lang="fr"
+      data-wf-site="693414c0a24bd9a413f912b8"
+      data-wf-page="693414c0a24bd9a413f912b9"
+      suppressHydrationWarning
+    >
       <body>
         {children}
         <SiteScripts />

@@ -19,11 +19,6 @@ export default function SiteScripts() {
         strategy="afterInteractive"
       />
       <Script
-        data-memberstack-app="app_cmiu85zsd00fk0st9ez036x5x"
-        src="https://static.memberstack.com/scripts/v2/memberstack.js"
-        strategy="afterInteractive"
-      />
-      <Script
         src="https://cdn.prod.website-files.com/693414c0a24bd9a413f912b8%2F685146e1d8a68f749232b664%2F693496c11e3ba5e041d7d54d%2Fimportucanddefinelocales-1.1.1.js"
         strategy="afterInteractive"
       />
@@ -53,9 +48,197 @@ export default function SiteScripts() {
       />
       <Script id="gsap-register" strategy="afterInteractive">{`gsap.registerPlugin(ScrollTrigger,SplitText);`}</Script>
 
+      <Script id="count-up-animation" strategy="afterInteractive">{`
+(function(){
+  var counters = document.querySelectorAll("[data-count-to]");
+  if (!counters.length) return;
+  var duration = 1000;
+  function easeOutCirc(t) { return Math.sqrt(1 - Math.pow(t - 1, 2)); }
+  function animateCounter(el) {
+    var target = parseInt(el.getAttribute("data-count-to"), 10);
+    var prefix = el.getAttribute("data-count-prefix") || "";
+    var suffix = el.getAttribute("data-count-suffix") || "";
+    var start = performance.now();
+    function update(now) {
+      var elapsed = now - start;
+      var progress = Math.min(elapsed / duration, 1);
+      var eased = easeOutCirc(progress);
+      var current = Math.round(eased * target);
+      el.textContent = prefix + current + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(function(el) { observer.observe(el); });
+})();
+`}</Script>
+
+      <Script id="accordion-dropdown" strategy="afterInteractive">{`
+(function(){
+  var dropdowns = document.querySelectorAll(".dropdown-wrapper .dropdown-isolation");
+  if (!dropdowns.length) return;
+  var firstToggle = dropdowns[0].querySelector(".dropdown-toggle");
+  var firstList = dropdowns[0].querySelector(".dropdown-list-isolation");
+  if (firstToggle) firstToggle.classList.add("w--open");
+  if (firstList) firstList.classList.add("w--open");
+  dropdowns.forEach(function(dd) {
+    var toggle = dd.querySelector(".dropdown-toggle");
+    if (!toggle) return;
+    toggle.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var list = dd.querySelector(".dropdown-list-isolation");
+      var isOpen = toggle.classList.contains("w--open");
+      dropdowns.forEach(function(other) {
+        var otherToggle = other.querySelector(".dropdown-toggle");
+        var otherList = other.querySelector(".dropdown-list-isolation");
+        if (otherToggle) otherToggle.classList.remove("w--open");
+        if (otherList) otherList.classList.remove("w--open");
+      });
+      if (!isOpen) {
+        toggle.classList.add("w--open");
+        if (list) list.classList.add("w--open");
+      }
+    });
+  });
+})();
+`}</Script>
+
+      <Script id="marquee-drag" strategy="afterInteractive">{`
+(function(){
+  var wrapper = document.querySelector("[data-marquee]");
+  if (!wrapper) return;
+  var track = wrapper.querySelector("[data-marquee-track]");
+  if (!track) return;
+  var original = track.querySelector("[data-marquee-group]");
+  if (!original) return;
+
+  // Clone enough groups so the track is always wider than the viewport
+  // We need at least 3x viewport width to handle fast drags in both directions
+  function ensureClones() {
+    var wrapperW = wrapper.offsetWidth;
+    var groupW = original.offsetWidth + parseFloat(getComputedStyle(track).gap || 0);
+    if (groupW <= 0) return;
+    var needed = Math.ceil((wrapperW * 3) / groupW) + 1;
+    var current = track.children.length;
+    for (var i = current; i < needed; i++) {
+      var clone = original.cloneNode(true);
+      clone.removeAttribute("data-marquee-group");
+      clone.setAttribute("aria-hidden", "true");
+      track.appendChild(clone);
+    }
+  }
+  ensureClones();
+  window.addEventListener("resize", ensureClones);
+
+  // Stop CSS animation, we drive everything via JS
+  track.style.animation = "none";
+
+  var isDragging = false;
+  var isInertia = false;
+  var startX = 0;
+  var currentTranslate = 0;
+  var prevTranslate = 0;
+  var velocity = 0;
+  var lastX = 0;
+  var lastTime = 0;
+  var autoSpeed = 0.8;
+
+  function getGroupWidth() {
+    return original.offsetWidth + parseFloat(getComputedStyle(track).gap || 0);
+  }
+
+  // Modulo wrap: keeps currentTranslate in range [-groupW, 0)
+  function wrapPosition() {
+    var gw = getGroupWidth();
+    if (gw <= 0) return;
+    currentTranslate = ((currentTranslate % gw) + gw) % gw;
+    if (currentTranslate > 0) currentTranslate -= gw;
+  }
+
+  function setPosition() {
+    track.style.transform = "translate3d(" + currentTranslate + "px,0,0)";
+  }
+
+  // Main animation loop — auto-scrolls when not dragging/inerting
+  function tick() {
+    if (!isDragging && !isInertia) {
+      currentTranslate -= autoSpeed;
+      wrapPosition();
+      setPosition();
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  function getX(e) {
+    return e.touches ? e.touches[0].clientX : e.clientX;
+  }
+
+  function onPointerDown(e) {
+    isDragging = true;
+    isInertia = false;
+    velocity = 0;
+    startX = getX(e);
+    prevTranslate = currentTranslate;
+    lastX = startX;
+    lastTime = performance.now();
+    wrapper.classList.add("is-grabbing");
+    e.preventDefault();
+  }
+
+  function onPointerMove(e) {
+    if (!isDragging) return;
+    var x = getX(e);
+    var now = performance.now();
+    var dt = now - lastTime;
+    if (dt > 0) velocity = (x - lastX) / dt;
+    lastX = x;
+    lastTime = now;
+    currentTranslate = prevTranslate + (x - startX);
+    wrapPosition();
+    setPosition();
+  }
+
+  function onPointerUp() {
+    if (!isDragging) return;
+    isDragging = false;
+    wrapper.classList.remove("is-grabbing");
+
+    // Inertia phase
+    isInertia = true;
+    var friction = 0.94;
+    function step() {
+      if (Math.abs(velocity) < 0.005) { isInertia = false; return; }
+      velocity *= friction;
+      currentTranslate += velocity * 16;
+      wrapPosition();
+      setPosition();
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  wrapper.addEventListener("mousedown", onPointerDown);
+  window.addEventListener("mousemove", onPointerMove);
+  window.addEventListener("mouseup", onPointerUp);
+  wrapper.addEventListener("touchstart", onPointerDown, {passive: false});
+  window.addEventListener("touchmove", onPointerMove, {passive: false});
+  window.addEventListener("touchend", onPointerUp);
+  wrapper.addEventListener("dragstart", function(e){ e.preventDefault(); });
+})();
+`}</Script>
+
       <Script id="slater-load" strategy="afterInteractive">{`document.addEventListener(\"DOMContentLoaded\", function() {function loadkopro(e){let t=document.createElement(\"script\");t.setAttribute(\"src\",e),t.setAttribute(\"type\",\"module\"),document.body.appendChild(t),t.addEventListener(\"load\",()=>{console.log(\"Slater loaded KOPRO.js: https://slater.app/18135.js\")}),t.addEventListener(\"error\",e=>{console.log(\"Error loading file\",e)})}let src=window.location.host.includes(\"webflow.io\")?\"https://slater.app/18135.js\":\"https://assets.slater.app/slater/18135.js?v=1.0\";loadkopro(src);})`}</Script>
 
-      <Script id="memberstack-plan-route" strategy="afterInteractive">{`document.addEventListener("DOMContentLoaded", function () {\n  const path = window.location.pathname.replace(/\\/$/, "");\n  if (!path.startsWith("/app/dashboard")) return;\n  const PLAN_ROUTE_MAP = {\n    "pln_etape-2-9p7l0n8x": "/app/dashboard/etape-02",\n    "pln_-tape-3-lw750huj": "/app/dashboard/etape-03",\n    "pln_-tape-3-bis-fj760hbc": "/app/dashboard/etape-03-bis",\n    "pln_-tape-4-o56h0nq1": "/app/dashboard/etape-04",\n    "pln_-tape-4-bis-z8960ul1": "/app/dashboard/etape-04-bis",\n    "pln_-tape-5-o26i0nyt": "/app/dashboard/etape-05",\n    "pln_-tape-6-j3770hua": "/app/dashboard/etape-06",\n    "pln_-tape-7-is780hfr": "/app/dashboard/etape-07",\n    "pln_-tape-8-bl6m0ndu": "/app/dashboard/etape-08",\n    "pln_-tape-08-bis-l5790h5k": "/app/dashboard/etape-08-bis"\n  };\n  const backLink = document.getElementById("dashboardback");\n  if (!window.$memberstackDom) return;\n  window.$memberstackDom.getCurrentMember().then(({ data: member }) => {\n    if (!member) return;\n    const plans = member.planConnections || [];\n    if (!plans.length) return;\n    const activePlanId = plans[0].planId || plans[0].id;\n    const targetRoute = PLAN_ROUTE_MAP[activePlanId];\n    if (!targetRoute) return;\n    const normalizedTarget = targetRoute.replace(/\\/$/, "");\n    if (backLink) {\n      backLink.setAttribute("href", targetRoute);\n    }\n    if (path !== normalizedTarget) {\n      window.location.replace(targetRoute);\n    }\n  });\n});`}</Script>
 
       <Script
         src="https://cdn.prod.website-files.com/693414c0a24bd9a413f912b8%2F685146e1d8a68f749232b664%2F693496c16b483cfc95edb450%2Femptyfieldsremoval-1.1.0.js"

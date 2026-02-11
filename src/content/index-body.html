@@ -3,13 +3,13 @@
     <div class="custom-code">
       <div class="fluid-responsive w-embed">
         <style>
-/* Fluid jusqu'à 1770px */
+/* Fluid typography: scales linearly with viewport width */
 body { font-size: 0.9259vw; }
-/* Stopper la croissance au-delà de 1770px */
+/* Cap growth above 1770px */
 @media (min-width: 1770px) {
-  body { font-size: 16.3884px; } /* valeur équivalente à 0.9259vw @1770px */
+  body { font-size: 16.39px; }
 }
-/* et cappe le layout au même breakpoint */
+/* Cap container width */
 .container {
   max-width: 1770px;
   margin-inline: auto;
@@ -59,7 +59,7 @@ text-decoration: none;
       <div class="container w-container">
         <div class="navbar-components">
           <div id="w-node-_69dc41af-30f7-3edf-305c-865bd6467a63-d6467a60" class="brand-wrapper">
-            <a data-w-id="69dc41af-30f7-3edf-305c-865bd6467a64" href="/" aria-current="page" class="brand w-nav-brand w--current"><img src="/images/Vector---2025-12-06T124548.588.svg" loading="lazy" alt="" class="contain"></a>
+            <a data-w-id="69dc41af-30f7-3edf-305c-865bd6467a64" href="/" aria-current="page" class="brand w-nav-brand w--current"><img src="/images/Vector---2025-12-06T124548.588.svg" loading="lazy" alt="KOPRO - Bureau d'étude rénovation énergétique" class="contain"></a>
           </div>
           <nav role="navigation" class="nav-menu w-nav-menu">
             <a href="/#accueil" class="nav-link w-nav-link">Accueil</a>
@@ -68,11 +68,11 @@ text-decoration: none;
             <a href="/#fonctionnement" class="nav-link w-nav-link">Fonctionnement</a>
             <a href="/#pourquoi-choisir-kopro" class="nav-link w-nav-link">Pourquoi KOPRO</a>
             <div id="w-node-_69dc41af-30f7-3edf-305c-865bd6467a71-d6467a60" class="navbar-cta hide-desktop">
-              <a data-wf--main-button--variant="mobile" href="#" class="main-button w-variant-34a9a2b9-005c-9867-7ae0-d479d543268f w-button">Démarrer mon projet</a>
+              <a data-wf--main-button--variant="mobile" href="https://app.kopro.pro" class="main-button w-variant-34a9a2b9-005c-9867-7ae0-d479d543268f w-button">Démarrer mon projet</a>
             </div>
           </nav>
           <div id="w-node-_65bac6e7-3eac-f1ba-156b-07cd7c55e3b7-d6467a60" class="navbar-cta hide-tablet">
-            <a data-wf--main-button--variant="base" href="#" class="main-button w-button">Démarrer mon projet</a>
+            <a data-wf--main-button--variant="base" href="https://app.kopro.pro" class="main-button w-button">Démarrer mon projet</a>
           </div>
           <div id="w-node-_69dc41af-30f7-3edf-305c-865bd6467a74-d6467a60" class="menu-button-2 w-nav-button">
             <div class="w-icon-nav-menu"></div>
@@ -86,19 +86,24 @@ text-decoration: none;
           <div class="vertical-padding">
             <div>
               <div class="component vertical hero">
-                <div class="top-wrapper"><img src="/images/image-1.svg" loading="lazy" alt="" class="cee"><img src="/images/Vector.svg" loading="lazy" alt="" class="agence-de-l-habitat"><img src="/images/Maprimerenov_logo-2.svg" loading="lazy" alt="" class="prime-renov">
+                <div class="top-wrapper"><img src="/images/image-1.svg" loading="lazy" alt="Logo Certificats d'Économie d'Énergie CEE" class="cee"><img src="/images/Vector.svg" loading="lazy" alt="Logo Agence Nationale de l'Habitat" class="agence-de-l-habitat"><img src="/images/Maprimerenov_logo-2.svg" loading="lazy" alt="Logo MaPrimeRénov'" class="prime-renov">
                   <div wrapper="" class="text-wrapper---top hero">
                     <h1 class="h1-hero">Simplifiez <strong>vos démarches MaPrimeRénov’</strong> et <strong>CEE</strong> avec un bureau d’étude certifié <span class="rge-logo">RGE</span></h1>
                     <div class="_45em">
                       <p line="" data-wf-target="[[[&quot;693414c0a24bd9a413f912b9&quot;,&quot;a2171466-7849-04d7-69f7-8e17c94c228e&quot;],[]]]">KOPRO accompagne particuliers, copropriétés, SCI et artisans dans le montage complet de leurs dossiers de subventions énergétiques, partout en France.</p>
                     </div>
                     <div class="button-wrapper">
-                      <a data-wf--main-button--variant="base" href="#" class="main-button w-button">Je lance ma demande maintenant</a>
+                      <a data-wf--main-button--variant="base" href="https://app.kopro.pro" class="main-button w-button">Je lance ma demande maintenant</a>
                     </div>
-                    <div class="info-wrapper top">
-                      <p class="info-text"><span class="purple-text">+20</span> ans d’expérience</p>
-                      <div class="dot"></div>
-                      <p class="info-text"><span class="purple-text">1000+</span> dossiers validés</p>
+                    <div class="hero-stats">
+                      <div class="hero-stat-badge">
+                        <span class="hero-stat-number" data-count-to="20" data-count-prefix="+">+0</span>
+                        <span class="hero-stat-label">ans d'expérience</span>
+                      </div>
+                      <div class="hero-stat-badge">
+                        <span class="hero-stat-number" data-count-to="1000" data-count-suffix="+">0+</span>
+                        <span class="hero-stat-label">dossiers validés</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -106,7 +111,7 @@ text-decoration: none;
                   <div class="content">
                     <div class="content-asset">
                       <div image="" class="asset---hero">
-                        <div class="image-wrapper"><img loading="lazy" src="/images/Rectangle-2.jpg" alt="" class="cover"></div>
+                        <div class="image-wrapper"><img loading="lazy" src="/images/Rectangle-2.jpg" alt="Rénovation énergétique d'un logement accompagnée par KOPRO" class="cover"></div>
                       </div>
                     </div>
                   </div>
@@ -133,10 +138,10 @@ text-decoration: none;
                   <div class="content">
                     <div class="edito-propos">
                       <div class="quote-line">
-                        <p line="">Bureau d’étude thermique et administratif avec plus de 20 ans d’expérience, <strong>KOPRO</strong> est spécialisé dans l’efficacité énergétique des bâtiments. <br><br>Notre équipe accompagne les particuliers, copropriétés, SCI et artisans dans la gestion complète de leurs dossiers MaPrimeRénov’ et CEE, du diagnostic initial à la validation des primes.<br><br>Nous intervenons partout en France avec une approche claire, rapide et conforme à la réglementation.</p>
+                        <p line="">Bureau d’étude thermique et administratif avec plus de 20 ans d’expérience, <strong>KOPRO</strong> est spécialisé dans l’efficacité énergétique des bâtiments.<br><br>Notre équipe accompagne les particuliers, copropriétés, SCI et artisans dans la gestion complète de leurs dossiers MaPrimeRénov’ et CEE, du diagnostic initial à la validation des primes.<br><br>Nous intervenons partout en France avec une approche claire, rapide et conforme à la réglementation.</p>
                       </div>
                       <div image="" class="asset---edito-propos">
-                        <div class="image-wrapper"><img sizes="(max-width: 734px) 100vw, 734px" srcset="/images/Rectangle-8-p-500.jpg 500w, /images/Rectangle-8.jpg 734w" alt="" src="/images/Rectangle-8.jpg" loading="lazy" class="cover"></div>
+                        <div class="image-wrapper"><img sizes="(max-width: 734px) 100vw, 734px" srcset="/images/Rectangle-8-p-500.jpg 500w, /images/Rectangle-8.jpg 734w" alt="Équipe KOPRO spécialisée en rénovation énergétique" src="/images/Rectangle-8.jpg" loading="lazy" class="cover"></div>
                       </div>
                       <div class="blur-wrapper">
                         <p>Économies d’énergie</p>
@@ -149,28 +154,28 @@ text-decoration: none;
                 </div>
                 <div class="bottom-wrapper">
                   <div class="_4cards-wrapper">
-                    <div class="_4cards-item"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
-                      <h3>Mandataire CEE et MaPrimeRénov’</h3>
+                    <div class="_4cards-item"><img src="/images/icon-mandataire.svg" loading="lazy" alt="Icône mandataire CEE" class="icon-card">
+                      <h3>Mandataire CEE et MaPrimeRénov'</h3>
                       <div class="tool-tip-wraper"><img src="/images/Top-tooltip.svg" loading="lazy" alt="" class="image-3">
-                        <p>KOPRO est habilité à gérer vos dossiers d’aides en tant que mandataire officiel, garantissant un traitement conforme et un accès optimisé à vos primes.</p>
+                        <p>En tant que mandataire agréé, KOPRO prend en charge l'intégralité de vos démarches CEE et MaPrimeRénov', de la constitution du dossier jusqu'au versement de vos primes.</p>
                       </div>
                     </div>
-                    <div class="_4cards-item"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
+                    <div class="_4cards-item"><img src="/images/icon-nationale.svg" loading="lazy" alt="Icône intervention nationale" class="icon-card">
                       <h3>Intervention nationale</h3>
                       <div class="tool-tip-wraper"><img src="/images/Top-tooltip.svg" loading="lazy" alt="" class="image-3">
-                        <p>KOPRO est habilité à gérer vos dossiers d’aides en tant que mandataire officiel, garantissant un traitement conforme et un accès optimisé à vos primes.</p>
+                        <p>Nous intervenons sur l'ensemble du territoire français, en métropole comme en outre-mer, pour accompagner vos projets de rénovation énergétique où que vous soyez.</p>
                       </div>
                     </div>
-                    <div class="_4cards-item"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
+                    <div class="_4cards-item"><img src="/images/icon-dossier.svg" loading="lazy" alt="Icône dossiers conformes" class="icon-card">
                       <h3>Dossiers conformes et transmis à l&#x27;ANAH sous 15 jours</h3>
                       <div class="tool-tip-wraper"><img src="/images/Top-tooltip.svg" loading="lazy" alt="" class="image-3">
-                        <p>KOPRO est habilité à gérer vos dossiers d’aides en tant que mandataire officiel, garantissant un traitement conforme et un accès optimisé à vos primes.</p>
+                        <p>Chaque dossier est vérifié, mis en conformité et transmis à l'ANAH dans un délai de 15 jours, pour un traitement rapide et sans erreur de vos demandes d'aides.</p>
                       </div>
                     </div>
-                    <div class="_4cards-item"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
+                    <div class="_4cards-item"><img src="/images/icon-accompagnement.svg" loading="lazy" alt="Icône accompagnement" class="icon-card">
                       <h3>Accompagnement pour les particuliers et artisans</h3>
                       <div class="tool-tip-wraper"><img src="/images/Top-tooltip.svg" loading="lazy" alt="" class="image-3">
-                        <p>KOPRO est habilité à gérer vos dossiers d’aides en tant que mandataire officiel, garantissant un traitement conforme et un accès optimisé à vos primes.</p>
+                        <p>KOPRO guide les particuliers dans leurs projets de rénovation et aide les artisans à proposer les aides à leurs clients, avec un suivi personnalisé à chaque étape.</p>
                       </div>
                     </div>
                   </div>
@@ -202,7 +207,7 @@ text-decoration: none;
                       <div class="dropdown-wrapper">
                         <div class="wrapper-outline-dropdown">
                           <div data-hover="false" data-delay="0" class="dropdown-isolation w-dropdown">
-                            <div class="dropdown-toggle w-dropdown-toggle"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-dropdown">
+                            <div class="dropdown-toggle w-dropdown-toggle"><img src="/images/icon-isolation.svg" loading="lazy" alt="" class="icon-dropdown">
                               <h3>Isolation / Menuiserie</h3>
                               <p class="text-badge-purple">Réduisez vos déperditions d’énergie</p>
                             </div>
@@ -211,62 +216,62 @@ text-decoration: none;
                                 <p>Travaux d’isolation des combles, murs extérieurs ou planchers bas, ainsi que de remplacement des menuiseries (fenêtres, portes, volets) pour réduire les pertes thermiques et améliorer durablement la performance énergétique de votre logement.</p>
                               </div>
                               <div class="button-wrapper left">
-                                <a data-wf--main-button--variant="base" href="#" class="main-button w-button">Vérifier mon éligibilité</a>
+                                <a data-wf--main-button--variant="base" href="https://app.kopro.pro" class="main-button w-button">Démarrer mon projet</a>
                               </div>
                             </nav>
                           </div>
                         </div>
                         <div class="wrapper-outline-dropdown">
                           <div data-hover="false" data-delay="0" class="dropdown-isolation w-dropdown">
-                            <div class="dropdown-toggle w-dropdown-toggle"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-dropdown">
+                            <div class="dropdown-toggle w-dropdown-toggle"><img src="/images/icon-chauffage.svg" loading="lazy" alt="" class="icon-dropdown">
                               <h3>Chauffage performant</h3>
                               <p class="text-badge-purple">Optez pour une pompe à chaleur économe</p>
                             </div>
                             <nav class="dropdown-list-isolation w-dropdown-list">
                               <div class="opacity-80">
-                                <p>Travaux d’isolation des combles, murs extérieurs ou planchers bas, ainsi que de remplacement des menuiseries (fenêtres, portes, volets) pour réduire les pertes thermiques et améliorer durablement la performance énergétique de votre logement.</p>
+                                <p>Installation de pompes à chaleur, de chaudières à granulés, pour remplacer un système de chauffage ancien, réduire votre consommation d'énergie et améliorer durablement la performance énergétique de votre logement.</p>
                               </div>
                               <div class="button-wrapper left">
-                                <a data-wf--main-button--variant="base" href="#" class="main-button w-button">Vérifier mon éligibilité</a>
+                                <a data-wf--main-button--variant="base" href="https://app.kopro.pro" class="main-button w-button">Démarrer mon projet</a>
                               </div>
                             </nav>
                           </div>
                         </div>
                         <div class="wrapper-outline-dropdown">
                           <div data-hover="false" data-delay="0" class="dropdown-isolation w-dropdown">
-                            <div class="dropdown-toggle w-dropdown-toggle"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-dropdown">
-                              <h3>Eau chaude</h3>
-                              <p class="text-badge-purple">Équipez-vous d’un ballon thermodynamique</p>
+                            <div class="dropdown-toggle w-dropdown-toggle"><img src="/images/icon-ballon.svg" loading="lazy" alt="" class="icon-dropdown">
+                              <h3>Ballon thermodynamique</h3>
+                              <p class="text-badge-purple">Équipez-vous d'un ballon thermodynamique</p>
                             </div>
                             <nav class="dropdown-list-isolation w-dropdown-list">
                               <div class="opacity-80">
-                                <p>Travaux d’isolation des combles, murs extérieurs ou planchers bas, ainsi que de remplacement des menuiseries (fenêtres, portes, volets) pour réduire les pertes thermiques et améliorer durablement la performance énergétique de votre logement.</p>
+                                <p>Installation de ballons thermodynamiques, pour produire une eau chaude sanitaire plus économique, en réduisant durablement votre consommation d'énergie.</p>
                               </div>
                               <div class="button-wrapper left">
-                                <a data-wf--main-button--variant="base" href="#" class="main-button w-button">Vérifier mon éligibilité</a>
+                                <a data-wf--main-button--variant="base" href="https://app.kopro.pro" class="main-button w-button">Démarrer mon projet</a>
                               </div>
                             </nav>
                           </div>
                         </div>
                         <div class="wrapper-outline-dropdown">
                           <div data-hover="false" data-delay="0" class="dropdown-isolation w-dropdown">
-                            <div class="dropdown-toggle w-dropdown-toggle"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-dropdown">
+                            <div class="dropdown-toggle w-dropdown-toggle"><img src="/images/icon-ventilation.svg" loading="lazy" alt="" class="icon-dropdown">
                               <h3>Ventilation</h3>
-                              <p class="text-badge-purple">Améliorez la qualité de l’air intérieur</p>
+                              <p class="text-badge-purple">Améliorez la qualité de l'air intérieur</p>
                             </div>
                             <nav class="dropdown-list-isolation w-dropdown-list">
                               <div class="opacity-80">
-                                <p>Travaux d’isolation des combles, murs extérieurs ou planchers bas, ainsi que de remplacement des menuiseries (fenêtres, portes, volets) pour réduire les pertes thermiques et améliorer durablement la performance énergétique de votre logement.</p>
+                                <p>Installation de systèmes de ventilation performants, pour améliorer la qualité de l'air intérieur, limiter l'humidité et garantir un habitat plus sain et confortable au quotidien.</p>
                               </div>
                               <div class="button-wrapper left">
-                                <a data-wf--main-button--variant="base" href="#" class="main-button w-button">Vérifier mon éligibilité</a>
+                                <a data-wf--main-button--variant="base" href="https://app.kopro.pro" class="main-button w-button">Démarrer mon projet</a>
                               </div>
                             </nav>
                           </div>
                         </div>
                       </div>
                       <div image="" class="asset---edito-aide">
-                        <div class="image-wrapper"><img sizes="(max-width: 589px) 100vw, 589px" srcset="/images/Rectangle-88-p-500.jpg 500w, /images/Rectangle-88.jpg 589w" alt="" src="/images/Rectangle-88.jpg" loading="lazy" class="cover"></div>
+                        <div class="image-wrapper"><img sizes="(max-width: 589px) 100vw, 589px" srcset="/images/Rectangle-88-p-500.jpg 500w, /images/Rectangle-88.jpg 589w" alt="Travaux d'isolation et rénovation énergétique éligibles aux aides" src="/images/Rectangle-88.jpg" loading="lazy" class="cover"></div>
                       </div>
                     </div>
                   </div>
@@ -306,15 +311,137 @@ text-decoration: none;
                         </div>
                         <div class="w-tab-content">
                           <div data-w-tab="Autres régions" class="w-tab-pane">
-                            <div class="content-tab-wrapper"><img src="/images/4747a3294df238fef519840fd940e91480688e6c.png" loading="lazy" sizes="(max-width: 1536px) 100vw, 1536px, 100vw" srcset="/images/4747a3294df238fef519840fd940e91480688e6c-p-500.png 500w, /images/4747a3294df238fef519840fd940e91480688e6c-p-800.png 800w, /images/4747a3294df238fef519840fd940e91480688e6c-p-1080.png 1080w, /images/4747a3294df238fef519840fd940e91480688e6c.png 1536w" alt="" class="asset-tab"></div>
+                            <div class="content-tab-wrapper">
+                              <div class="plafonds-table-wrapper">
+                                <h3 class="plafonds-title">Plafonds des ressources annuelles<br><strong>pour bénéficier de MaPrimeRénov' et de la Prime</strong></h3>
+                                <table class="plafonds-table">
+                                  <thead>
+                                    <tr>
+                                      <th class="col-region" rowspan="2">AUTRES RÉGIONS</th>
+                                      <th class="col-label">Nombre de personnes composant le ménage</th>
+                                      <th class="col-blue">Ménages aux revenus très modestes</th>
+                                      <th class="col-yellow">Ménages aux revenus modestes</th>
+                                      <th class="col-orange">Ménages aux revenus intermédiaires</th>
+                                      <th class="col-pink">Ménages aux revenus supérieurs</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td class="col-region-cell" rowspan="6"></td>
+                                      <td class="col-label-cell">1</td>
+                                      <td class="col-blue-cell">≤ 17 363 €</td>
+                                      <td class="col-yellow-cell">≤ 22 259 €</td>
+                                      <td class="col-orange-cell">≤ 31 185 €</td>
+                                      <td class="col-pink-cell">&gt; 31 185 €</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="col-label-cell">2</td>
+                                      <td class="col-blue-cell">≤ 25 393 €</td>
+                                      <td class="col-yellow-cell">≤ 32 553 €</td>
+                                      <td class="col-orange-cell">≤ 45 842 €</td>
+                                      <td class="col-pink-cell">&gt; 45 842 €</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="col-label-cell">3</td>
+                                      <td class="col-blue-cell">≤ 30 540 €</td>
+                                      <td class="col-yellow-cell">≤ 39 148 €</td>
+                                      <td class="col-orange-cell">≤ 55 196 €</td>
+                                      <td class="col-pink-cell">&gt; 55 196 €</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="col-label-cell">4</td>
+                                      <td class="col-blue-cell">≤ 35 676 €</td>
+                                      <td class="col-yellow-cell">≤ 45 735 €</td>
+                                      <td class="col-orange-cell">≤ 64 550 €</td>
+                                      <td class="col-pink-cell">&gt; 64 550 €</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="col-label-cell">5</td>
+                                      <td class="col-blue-cell">≤ 40 835 €</td>
+                                      <td class="col-yellow-cell">≤ 52 348 €</td>
+                                      <td class="col-orange-cell">≤ 73 907 €</td>
+                                      <td class="col-pink-cell">&gt; 73 907 €</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="col-label-cell italic">Par personne supp.</td>
+                                      <td class="col-blue-cell">+ 5 151 €</td>
+                                      <td class="col-yellow-cell">+ 6 598 €</td>
+                                      <td class="col-orange-cell">+ 9 357 €</td>
+                                      <td class="col-pink-cell">+ 9 357 €</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
                           </div>
                           <div data-w-tab="Île-de-France" class="w-tab-pane w--tab-active">
-                            <div class="content-tab-wrapper"><img src="/images/4747a3294df238fef519840fd940e91480688e6c.png" loading="lazy" sizes="(max-width: 1536px) 100vw, 1536px" srcset="/images/4747a3294df238fef519840fd940e91480688e6c-p-500.png 500w, /images/4747a3294df238fef519840fd940e91480688e6c-p-800.png 800w, /images/4747a3294df238fef519840fd940e91480688e6c-p-1080.png 1080w, /images/4747a3294df238fef519840fd940e91480688e6c.png 1536w" alt="" class="asset-tab"></div>
+                            <div class="content-tab-wrapper">
+                              <div class="plafonds-table-wrapper">
+                                <h3 class="plafonds-title">Plafonds des ressources annuelles<br><strong>pour bénéficier de MaPrimeRénov' et de la Prime</strong></h3>
+                                <table class="plafonds-table">
+                                  <thead>
+                                    <tr>
+                                      <th class="col-region" rowspan="2">ÎLE-DE-FRANCE</th>
+                                      <th class="col-label">Nombre de personnes composant le ménage</th>
+                                      <th class="col-blue">Ménages aux revenus très modestes</th>
+                                      <th class="col-yellow">Ménages aux revenus modestes</th>
+                                      <th class="col-orange">Ménages aux revenus intermédiaires</th>
+                                      <th class="col-pink">Ménages aux revenus supérieurs</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td class="col-region-cell" rowspan="6"></td>
+                                      <td class="col-label-cell">1</td>
+                                      <td class="col-blue-cell">≤ 24 031 €</td>
+                                      <td class="col-yellow-cell">≤ 29 253 €</td>
+                                      <td class="col-orange-cell">≤ 40 851 €</td>
+                                      <td class="col-pink-cell">&gt; 40 851 €</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="col-label-cell">2</td>
+                                      <td class="col-blue-cell">≤ 35 270 €</td>
+                                      <td class="col-yellow-cell">≤ 42 933 €</td>
+                                      <td class="col-orange-cell">≤ 60 051 €</td>
+                                      <td class="col-pink-cell">&gt; 60 051 €</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="col-label-cell">3</td>
+                                      <td class="col-blue-cell">≤ 42 357 €</td>
+                                      <td class="col-yellow-cell">≤ 51 564 €</td>
+                                      <td class="col-orange-cell">≤ 71 846 €</td>
+                                      <td class="col-pink-cell">&gt; 71 846 €</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="col-label-cell">4</td>
+                                      <td class="col-blue-cell">≤ 49 455 €</td>
+                                      <td class="col-yellow-cell">≤ 60 208 €</td>
+                                      <td class="col-orange-cell">≤ 84 562 €</td>
+                                      <td class="col-pink-cell">&gt; 84 562 €</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="col-label-cell">5</td>
+                                      <td class="col-blue-cell">≤ 56 580 €</td>
+                                      <td class="col-yellow-cell">≤ 68 877 €</td>
+                                      <td class="col-orange-cell">≤ 96 817 €</td>
+                                      <td class="col-pink-cell">&gt; 96 817 €</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="col-label-cell italic">Par personne supp.</td>
+                                      <td class="col-blue-cell">+ 7 116 €</td>
+                                      <td class="col-yellow-cell">+ 8 663 €</td>
+                                      <td class="col-orange-cell">+ 12 257 €</td>
+                                      <td class="col-pink-cell">+ 12 257 €</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
                       <div class="button-wrapper center">
-                        <a data-wf--main-button--variant="base" href="#" class="main-button w-button">Vérifier mon éligibilité</a>
+                        <a data-wf--main-button--variant="base" href="https://app.kopro.pro" class="main-button w-button">Démarrer mon projet</a>
                       </div>
                     </div>
                   </div>
@@ -378,7 +505,7 @@ text-decoration: none;
                       <p>Nous montons et déposons votre dossier complet sur la plateforme officielle. ➡️ Vous bénéficiez d’un suivi jusqu’au versement de vos primes.</p>
                     </div>
                     <a href="#" class="sticky-item special w-inline-block"><img loading="lazy" src="/images/fleche-sticky-card.svg" alt="" class="arrow-card">
-                      <h3>Je lance mon dossier dès maintenant.</h3>
+                      <p class="h3">Je lance mon dossier dès maintenant.</p>
                     </a>
                   </div>
                 </div>
@@ -401,25 +528,25 @@ text-decoration: none;
                   </div>
                   <div class="list-wrapper">
                     <div class="list-item">
-                      <div class="dot big"></div>
+                      <img src="/images/icon-check.svg" loading="lazy" alt="" width="20" height="20" style="flex-shrink:0;margin-right:.5em">
                       <p line="">Dossiers complets et conformes sous 72h</p>
                     </div>
                     <div class="list-item">
-                      <div class="dot big"></div>
+                      <img src="/images/icon-check.svg" loading="lazy" alt="" width="20" height="20" style="flex-shrink:0;margin-right:.5em">
                       <p line="">Paiements rapides et transparents</p>
                     </div>
                     <div class="list-item">
-                      <div class="dot big"></div>
+                      <img src="/images/icon-check.svg" loading="lazy" alt="" width="20" height="20" style="flex-shrink:0;margin-right:.5em">
                       <p line="">Suivi administratif intégral</p>
                     </div>
                   </div>
                   <div class="button-wrapper left">
-                    <a data-wf--main-button--variant="orange" href="#" class="main-button w-variant-b74ad4ea-a3f7-23bb-c7bf-31e646862223 w-button">Je souhaite devenir partenaire</a>
+                    <a data-wf--main-button--variant="orange" href="mailto:contact@kopro.fr" class="main-button w-variant-b74ad4ea-a3f7-23bb-c7bf-31e646862223 w-button">contact@kopro.fr</a>
                   </div>
                 </div>
                 <div class="content-wrapper---horizontal">
                   <div image="" class="asset-dossier-cee">
-                    <div class="image-wrapper"><img sizes="(max-width: 734px) 100vw, 734px" srcset="/images/Rectangle-845-p-500.jpg 500w, /images/Rectangle-845.jpg 734w" alt="" src="/images/Rectangle-845.jpg" loading="lazy" class="cover"></div>
+                    <div class="image-wrapper"><img sizes="(max-width: 734px) 100vw, 734px" srcset="/images/Rectangle-845-p-500.jpg 500w, /images/Rectangle-845.jpg 734w" alt="Artisan réalisant des travaux de rénovation énergétique" src="/images/Rectangle-845.jpg" loading="lazy" class="cover"></div>
                   </div>
                 </div>
               </div>
@@ -442,80 +569,38 @@ text-decoration: none;
                   <div class="stats-wrapper">
                     <div class="stats-item">
                       <div class="stats-item-top">
-                        <div class="statnumber"><span class="purple-text _500">+</span>20</div>
+                        <div class="statnumber"><span class="purple-text _500">+</span><span data-count-to="20">20</span></div>
                       </div>
-                      <p class="paragraph-classic">Années d’expérience</p>
+                      <p class="paragraph-classic">Années d'expérience</p>
                     </div>
                     <div class="stats-item">
                       <div class="stats-item-top">
-                        <div class="statnumber"><span class="purple-text _500">+</span>1000</div>
+                        <div class="statnumber"><span class="purple-text _500">+</span><span data-count-to="1000">1000</span></div>
                       </div>
                       <p class="paragraph-classic">Dossiers validés</p>
                     </div>
                     <div class="stats-item">
                       <div class="stats-item-top">
-                        <div class="statnumber"><span class="purple-text _500">+</span>98%</div>
+                        <div class="statnumber"><span class="purple-text _500">+</span><span data-count-to="98" data-count-suffix="%">98%</span></div>
                       </div>
                       <p class="paragraph-classic">Satisfaction client</p>
                     </div>
                   </div>
                 </div>
-                <div class="content-wrapper">
-                  <div class="content">
-                    <div class="splide-list">
-                      <div class="splide autoplay">
-                        <div class="splide__track">
-                          <div class="splide__list stat">
-                            <div class="splide__slide card">
-                              <div class="card-item-splide-wrapper">
-                                <div class="card-item-splide"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
-                                  <h3>Dossiers conformes et validés rapidement</h3>
-                                </div>
-                                <div class="card-item-splide"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
-                                  <h3>Intervention nationale</h3>
-                                </div>
-                                <div class="card-item-splide"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
-                                  <h3>Primes cumulables et maximisées</h3>
-                                </div>
-                                <div class="card-item-splide"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
-                                  <h3>Bureau d’étude certifié RGE</h3>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="splide__slide card">
-                              <div class="card-item-splide-wrapper">
-                                <div class="card-item-splide"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
-                                  <h3>Dossiers conformes et validés rapidement</h3>
-                                </div>
-                                <div class="card-item-splide"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
-                                  <h3>Intervention nationale</h3>
-                                </div>
-                                <div class="card-item-splide"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
-                                  <h3>Primes cumulables et maximisées</h3>
-                                </div>
-                                <div class="card-item-splide"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
-                                  <h3>Bureau d’étude certifié RGE</h3>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="splide__slide card">
-                              <div class="card-item-splide-wrapper">
-                                <div class="card-item-splide"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
-                                  <h3>Dossiers conformes et validés rapidement</h3>
-                                </div>
-                                <div class="card-item-splide"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
-                                  <h3>Intervention nationale</h3>
-                                </div>
-                                <div class="card-item-splide"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
-                                  <h3>Primes cumulables et maximisées</h3>
-                                </div>
-                                <div class="card-item-splide"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
-                                  <h3>Bureau d’étude certifié RGE</h3>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                <div class="marquee-wrapper" data-marquee>
+                  <div class="marquee-track" data-marquee-track>
+                    <div class="marquee-group" data-marquee-group>
+                      <div class="card-item-splide"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
+                        <p class="h3">Intervention nationale</p>
+                      </div>
+                      <div class="card-item-splide"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
+                        <p class="h3">Primes cumulables et maximisées</p>
+                      </div>
+                      <div class="card-item-splide"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
+                        <p class="h3">Bureau d'étude certifié RGE</p>
+                      </div>
+                      <div class="card-item-splide"><img src="/images/icon-card.svg" loading="lazy" alt="" class="icon-card">
+                        <p class="h3">Dossiers conformes et validés rapidement</p>
                       </div>
                     </div>
                   </div>
@@ -532,7 +617,7 @@ text-decoration: none;
               <div class="component vertical">
                 <div class="top-wrapper forms">
                   <div wrapper="" class="text-wrapper---top forms">
-                    <h1 class="h2"><span class="purple-text"><strong>Démarrez</strong></span><strong> votre dossier en quelques minutes.</strong></h1>
+                    <h2 class="h2"><span class="purple-text"><strong>Démarrez</strong></span><strong> votre dossier en quelques minutes.</strong></h2>
                   </div>
                   <div class="bottom-info-text-wrapper">
                     <p class="paragraph-small">Service <span class="purple-text">100% sécurisé</span></p>
@@ -546,6 +631,9 @@ text-decoration: none;
                   <div class="content">
                     <div class="duplicate-and-rename"></div>
                   </div>
+                </div>
+                <div class="button-wrapper center">
+                  <a data-wf--main-button--variant="base" href="https://app.kopro.pro" class="main-button w-button">Démarrer mon projet</a>
                 </div>
               </div>
             </div>
@@ -564,20 +652,20 @@ text-decoration: none;
                       <div class="footer-vertical-wrapper main">
                         <div class="left-logo-contact-wrapper">
                           <div class="top-wrapper-logo">
-                            <a href="#" class="logo-footer w-inline-block"><img loading="lazy" src="/images/logo-footer.svg" alt="" class="contain"></a><img src="/images/rge.svg" loading="lazy" alt="" class="image-2">
+                            <a href="#" class="logo-footer w-inline-block"><img loading="lazy" src="/images/logo-footer.svg" alt="KOPRO logo" class="contain"></a><img src="/images/rge.svg" loading="lazy" alt="Certification RGE" class="image-2">
                           </div>
                           <p>Bureau d’étude thermique et administratif certifié RGE, spécialisé dans le montage de dossiers MaPrimeRénov’ et CEE à destination des particuliers, copropriétés, SCI et artisans — partout en France.</p>
                           <div class="info-wrapper">
                             <div class="contact-item"><img src="/images/Vector_1.svg" loading="lazy" alt="" class="icon-info">
                               <p>contact@kopro.fr</p>
                             </div>
-                            <div class="contact-item"><img src="/images/Vector_1.svg" loading="lazy" alt="" class="icon-info">
+                            <div class="contact-item"><img src="/images/icon-phone.svg" loading="lazy" alt="" class="icon-info">
                               <p>06 85 91 81 72</p>
                             </div>
-                            <div class="contact-item"><img src="/images/Vector_1.svg" loading="lazy" alt="" class="icon-info">
+                            <div class="contact-item"><img src="/images/icon-location.svg" loading="lazy" alt="" class="icon-info">
                               <p>7 rue du Haut de Chaumont, 88500 Mirecourt</p>
                             </div>
-                            <div class="contact-item"><img src="/images/Vector_1.svg" loading="lazy" alt="" class="icon-info">
+                            <div class="contact-item"><img src="/images/icon-clock.svg" loading="lazy" alt="" class="icon-info">
                               <p>Du lundi au vendredi, 9h – 18h</p>
                             </div>
                           </div>
@@ -587,10 +675,10 @@ text-decoration: none;
                         <div class="nav-link-wrapper">
                           <p class="paragraph-small purple-text">Navigation</p>
                           <div class="navlink-footer">
-                            <a href="#" class="navlink-text-footer">Accueil</a>
-                            <a href="#" class="navlink-text-footer">Aides &amp; Travaux éligibles</a>
-                            <a href="#" class="navlink-text-footer">Fonctionnement</a>
-                            <a href="#" class="navlink-text-footer">Artisans &amp; Partenaires</a>
+                            <a href="/#accueil" class="navlink-text-footer">Accueil</a>
+                            <a href="/#aides" class="navlink-text-footer">Aides &amp; Travaux éligibles</a>
+                            <a href="/#fonctionnement" class="navlink-text-footer">Fonctionnement</a>
+                            <a href="/#pourquoi-choisir-kopro" class="navlink-text-footer">Artisans &amp; Partenaires</a>
                           </div>
                         </div>
                         <div class="nav-link-wrapper">
@@ -598,16 +686,8 @@ text-decoration: none;
                           <div class="navlink-footer">
                             <a href="#" class="navlink-text-footer">Plafonds MaPrimeRénov’ 2025 (PDF)</a>
                             <a href="#" class="navlink-text-footer">Fonctionnement des CEE (PDF)</a>
-                            <a href="#" class="navlink-text-footer">Mentions légales</a>
-                            <a href="#" class="navlink-text-footer">Politique de confidentialité</a>
-                          </div>
-                        </div>
-                        <div class="nav-link-wrapper">
-                          <p class="paragraph-small purple-text">Espace client</p>
-                          <div class="navlink-footer">
-                            <a href="#" class="navlink-text-footer">Connexion</a>
-                            <a href="#" class="navlink-text-footer">Suivi de dossier</a>
-                            <a href="#" class="navlink-text-footer">Aide &amp; Support</a>
+                            <a href="/mentions-legales" class="navlink-text-footer">Mentions légales</a>
+                            <a href="/politique-de-confidentialite" class="navlink-text-footer">Politique de confidentialité</a>
                           </div>
                         </div>
                       </div>

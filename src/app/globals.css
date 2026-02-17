@@ -3270,9 +3270,9 @@ blockquote {
 
 .col-region-cell {
   background-color: #d4e8d0;
-  width: 0;
   padding: 0;
-  display: none;
+  font-size: 0;
+  line-height: 0;
 }
 
 .col-label {
@@ -3663,6 +3663,7 @@ blockquote {
   }
 
   .navbar-components {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -3720,6 +3721,50 @@ blockquote {
   }
 
   .menu-button-2.w--open {
+    background-color: var(--accent);
+    border-radius: .4em;
+    color: white;
+  }
+
+  /* Show mobile nav when burger is toggled */
+  .navbar-components.nav-menu-open .w-nav-menu {
+    display: block !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white) !important;
+    text-align: left;
+    padding: 1em 2em;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+  }
+
+  .navbar-components.nav-menu-open .w-nav-menu .nav-link,
+  .navbar-components.nav-menu-open .w-nav-menu .w-nav-link {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    padding: .75em 0;
+    font-size: 1em !important;
+    color: var(--dark) !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .navbar-components.nav-menu-open .w-nav-menu .nav-link:hover {
+    color: var(--accent) !important;
+  }
+
+  .navbar-components.nav-menu-open .w-nav-menu .navbar-cta.hide-desktop {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    margin-top: .5em;
+  }
+
+  .navbar-components.nav-menu-open .w-nav-button {
     background-color: var(--accent);
     border-radius: .4em;
     color: white;

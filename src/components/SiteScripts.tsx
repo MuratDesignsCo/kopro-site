@@ -33,7 +33,6 @@ export default function SiteScripts() {
         crossOrigin="anonymous"
         strategy="afterInteractive"
       />
-      <Script src="/js/kopro.js" strategy="afterInteractive" />
       <Script
         src="https://cdn.prod.website-files.com/gsap/3.14.2/gsap.min.js"
         strategy="afterInteractive"
@@ -46,7 +45,36 @@ export default function SiteScripts() {
         src="https://cdn.prod.website-files.com/gsap/3.14.2/SplitText.min.js"
         strategy="afterInteractive"
       />
-      <Script id="gsap-register" strategy="afterInteractive">{`gsap.registerPlugin(ScrollTrigger,SplitText);`}</Script>
+      <Script id="gsap-register-then-kopro" strategy="afterInteractive">{`(function(){
+  function loadKoproJs() {
+    var s = document.createElement('script');
+    s.src = '/js/kopro.js';
+    document.body.appendChild(s);
+  }
+  function tryRegister(){
+    if (window.gsap && window.ScrollTrigger && window.SplitText) {
+      window.gsap.registerPlugin(window.ScrollTrigger, window.SplitText);
+      return true;
+    }
+    return false;
+  }
+  function boot() {
+    if (tryRegister()) {
+      loadKoproJs();
+    } else {
+      var attempts = 0;
+      var timer = setInterval(function(){
+        attempts += 1;
+        if (tryRegister()) {
+          clearInterval(timer);
+          loadKoproJs();
+        }
+        if (attempts > 40) clearInterval(timer);
+      }, 150);
+    }
+  }
+  boot();
+})();`}</Script>
 
       <Script id="count-up-animation" strategy="afterInteractive">{`
 (function(){
@@ -107,6 +135,22 @@ export default function SiteScripts() {
         toggle.classList.add("w--open");
         if (list) list.classList.add("w--open");
       }
+    });
+  });
+})();
+`}</Script>
+
+      <Script id="mobile-nav" strategy="afterInteractive">{`
+(function(){
+  var btn = document.querySelector('.w-nav-button');
+  var navC = document.querySelector('.navbar-components');
+  if (!btn || !navC) return;
+  btn.addEventListener('click', function() {
+    navC.classList.toggle('nav-menu-open');
+  });
+  navC.querySelectorAll('.w-nav-menu .nav-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      navC.classList.remove('nav-menu-open');
     });
   });
 })();
